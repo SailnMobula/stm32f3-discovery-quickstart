@@ -1,8 +1,8 @@
-# `cortex-m-quickstart`
+# `STM32F3DISCOVERY Quickstart`
 
-> A template for building applications for ARM Cortex-M microcontrollers
+> A template for building applications for the STM32F3DISCOVERY development board.
 
-This project is developed and maintained by the [Cortex-M team][team].
+This project is a fork of official cortex-m quickstart project, which is developed and maintained by the [Cortex-M team][team].
 
 ## Dependencies
 
@@ -29,22 +29,6 @@ programs, check [the embedded Rust book][book].
 
 [book]: https://rust-embedded.github.io/book
 
-0. Before we begin you need to identify some characteristics of the target
-  device as these will be used to configure the project:
-
-- The ARM core. e.g. Cortex-M3.
-
-- Does the ARM core include an FPU? Cortex-M4**F** and Cortex-M7**F** cores do.
-
-- How much Flash memory and RAM does the target device has? e.g. 256 KiB of
-  Flash and 32 KiB of RAM.
-
-- Where are Flash memory and RAM mapped in the address space? e.g. RAM is
-  commonly located at address `0x2000_0000`.
-
-You can find this information in the data sheet or the reference manual of your
-device.
-
 In this example we'll be using the STM32F3DISCOVERY. This board contains an
 STM32F303VCT6 microcontroller. This microcontroller has:
 
@@ -58,17 +42,15 @@ STM32F303VCT6 microcontroller. This microcontroller has:
 1. Instantiate the template.
 
 ``` console
-$ cargo generate --git https://github.com/rust-embedded/cortex-m-quickstart
- Project Name: app
- Creating project called `app`...
- Done! New project created /tmp/app
+$ cargo generate --git https://github.com/SailnMobula/stm32f3-discovery-quickstart
+ Project Name: first-f3discovery-app
+ Creating project called `first-f3discovery-app`...
+ Done! New project created /tmp/first-f3discovery-app
 
-$ cd app
+$ cd first-f3discovery-app
 ```
 
-2. Set a default compilation target. There are four options as mentioned at the
-   bottom of `.cargo/config`. For the STM32F303VCT6, which has a Cortex-M4F
-   core, we'll pick the `thumbv7em-none-eabihf` target.
+1. The compilation target is alread set to STM32F303VCT6 which is `thumbv7em-none-eabihf` in the `.cargo/config`.
 
 ``` console
 $ tail -n9 .cargo/config.toml
@@ -86,7 +68,7 @@ target = "thumbv7em-none-eabihf" # Cortex-M4F and Cortex-M7F (with FPU)
 # target = "thumbv8m.main-none-eabihf" # Cortex-M33 (with FPU)
 ```
 
-3. Enter the memory region information into the `memory.x` file.
+1. The correct memory region is already set in the `memory.x` file.
 
 ``` console
 $ cat memory.x
